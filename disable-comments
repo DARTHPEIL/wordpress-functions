@@ -1,5 +1,5 @@
-//for functions.php
-// Disable support for comments and trackbacks in post types
+//para poner en functions.php
+// deshabilitar comentarios
 function df_disable_comments_post_types_support() {
    $post_types = get_post_types();
    foreach ($post_types as $post_type) {
@@ -12,14 +12,14 @@ function df_disable_comments_post_types_support() {
 
 add_action('admin_init', 'df_disable_comments_post_types_support');
 
-// Close any comments open comments on the front-end just in case
+// cerrar comentarios que existan por si acaso
 function df_disable_comments_status() {
    return false;
 }
 add_filter('comments_open', 'df_disable_comments_status', 20, 2);
 add_filter('pings_open', 'df_disable_comments_status', 20, 2);
 
-// Hide any existing comments that are on the site. 
+// esconder comentarios que existan en el sitio
 function df_disable_comments_hide_existing_comments($comments) {
    $comments = array();
    return $comments;
